@@ -16,8 +16,8 @@ export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 // placeholder URL so importing this module never throws. All data hooks check
 // `isSupabaseConfigured` before attempting a network call.
 export const supabase: SupabaseClient = createClient(
-  supabaseUrl || "https://placeholder.supabase.co",
-  supabaseAnonKey || "public-anon-key-placeholder"
+  supabaseUrl || "https://nulyaerrreoljttocyyz.supabase.co",
+  supabaseAnonKey || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im51bHlhZXJycmVvbGp0dG9jeXl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU5NTg3OTIsImV4cCI6MjEwMTUzNDc5Mn0.JD4h3GA142qCMg8i7MxLXPhpiDPhLUFUwDPGI2AoAf4"
 );
 
 export const TABLES = {

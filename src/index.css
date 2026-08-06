@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600&family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-curtain: #970000;
+  --color-spotlight: #db0000;
+  --color-graphite: #636363;
+  --color-paper: #ffffff;
+  --color-stage: #000000;
+  --color-gold: #d4af37;
+
+  --font-display: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #970000, #db0000);
+  border-radius: 6px;
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: #db0000;
+  color: #ffffff;
+}
+
+/* ---------- Velvet texture background ---------- */
+.velvet-bg {
+  background-image:
+    radial-gradient(ellipse at top, rgba(219, 0, 0, 0.15), transparent 60%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 2px,
+      transparent 2px,
+      transparent 40px
+    ),
+    linear-gradient(180deg, #0a0000 0%, #000000 100%);
+}
+
+.curtain-gradient {
+  background: linear-gradient(180deg, #970000 0%, #5c0000 100%);
+}
+
+/* ---------- Spotlight glow ---------- */
+.spotlight-glow {
+  box-shadow: 0 0 25px rgba(219, 0, 0, 0.55), 0 0 60px rgba(219, 0, 0, 0.25);
+}
+
+.text-glow {
+  text-shadow: 0 0 18px rgba(219, 0, 0, 0.6), 0 0 40px rgba(151, 0, 0, 0.4);
+}
+
+.gold-text {
+  color: #d4af37;
+}
+
+/* ---------- Fade-in reveal ---------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ---------- Curtain pull entrance ---------- */
+@keyframes curtainLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-101%); }
+}
+@keyframes curtainRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(101%); }
+}
+.curtain-left {
+  animation: curtainLeft 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
+}
+.curtain-right {
+  animation: curtainRight 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
+}
+
+/* ---------- Marquee bulbs (theatre sign) ---------- */
+@keyframes bulbPulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+.bulb {
+  animation: bulbPulse 1.6s ease-in-out infinite;
+}
+
+/* ---------- Underline hover for nav links ---------- */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0%;
+  background: #db0000;
+  box-shadow: 0 0 8px #db0000;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ---------- Card hover lift ---------- */
+.theatre-card {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+}
+.theatre-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(219, 0, 0, 0.25), 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- Shimmer for gold accents ---------- */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.gold-shimmer {
+  background: linear-gradient(90deg, #d4af37 0%, #fff6d6 25%, #d4af37 50%, #fff6d6 75%, #d4af37 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ---------- Fine divider ---------- */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+/* ---------- Section number labels ---------- */
+.act-label {
+  letter-spacing: 0.35em;
+}
+
+/* ---------- Utility: hide scrollbar for filter row ---------- */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
